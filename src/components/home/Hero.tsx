@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
           className="max-w-3xl mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
-            Explore India On Your Terms
+            Explore India On Your TermS
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-8">
             Book from our wide selection of premium Indian cars and experience the freedom of the open road. Best prices, zero hidden charges.
