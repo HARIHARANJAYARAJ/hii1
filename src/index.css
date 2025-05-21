@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    @apply font-semibold leading-tight text-gray-900;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-primary-500;
+  }
+  
+  .container-custom {
+    @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-card transition-all duration-200 hover:shadow-card-hover;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .form-label {
+    @apply block mb-2 text-sm font-medium text-gray-700;
+  }
+  
+  .overlay-gradient {
+    @apply absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/80;
+  }
+}
+
+/* 3D Animation Helpers */
+.car-rotate {
+  animation: car-rotate 20s infinite linear;
+}
+
+@keyframes car-rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
