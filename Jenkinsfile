@@ -2,50 +2,56 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "your-dockerhub-username/project-bolt"
+        DOCKER_IMAGE = "hariharan11112"
         DOCKER_TAG = "latest"
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                checkout scm
+                echo '📥 Checking out code...'
+                git branch: 'main', url: 'https://github.com/HARIHARANJAYARAJ/hii1.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                echo '📦 Installing dependencies...'
+                bat 'npm install'
             }
         }
 
         stage('Build Project') {
             steps {
-                sh 'npm run build'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'npm test || echo "No tests defined"'
+                echo '🏗️ Building the project...'
+                bat 'npm run build'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t $DOCKER_IMAGE:$DOCKER_TAG ."
+                echo '🐳 Building Docker image...'
+                bat "docker build -t %DOCKER_IMAGE%:%DOCKER_TAG% ."
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Deploy with Docker Compose') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh """
-                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push $DOCKER_IMAGE:$DOCKER_TAG
-                    """
-                }
+                echo '🚀 Deploying application using Docker Compose...'
+                bat 'docker-compose up -d'
             }
+        }
+    }
+
+    post {
+        always {
+            echo '✅ Pipeline finished execution.'
+        }
+        success {
+            echo '🎉 Deployment successful!'
+        }
+        failure {
+            echo '❌ Deployment failed!'
         }
     }
 }
