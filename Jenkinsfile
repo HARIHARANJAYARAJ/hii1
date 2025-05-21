@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "hariharan11112"
+        DOCKER_IMAGE = "hariharan1112"
         DOCKER_TAG = "latest"
     }
 
@@ -17,28 +17,28 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo '📦 Installing dependencies...'
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
         stage('Build Project') {
             steps {
                 echo '🏗️ Building the project...'
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 echo '🐳 Building Docker image...'
-                bat "docker build -t %DOCKER_IMAGE%:%DOCKER_TAG% ."
+                sh "docker build -t $DOCKER_IMAGE:$DOCKER_TAG ."
             }
         }
 
         stage('Deploy with Docker Compose') {
             steps {
                 echo '🚀 Deploying application using Docker Compose...'
-                bat 'docker-compose up -d'
+                sh 'docker-compose up -d'
             }
         }
     }
