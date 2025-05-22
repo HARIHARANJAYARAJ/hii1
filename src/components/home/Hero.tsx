@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
             Explore India On Your Term
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-8">
-            Book from our wide selection of premium Indian cars and experience the freedom of the open road. Best prices, zero hidden charges.
+            Book  hii from our wide selection of premium Indian cars and experience the freedom of the open road. Best prices, zero hidden charges.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/cars" className="btn btn-primary px-8 py-3 text-lg">
